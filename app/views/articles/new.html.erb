@@ -1,0 +1,7 @@
+<%= form_with model: @article, local:true do |f| %>
+  <h5>写真</h5>
+  <%= f.attachment_field :image %>
+  <h5>キャプションを書く</h5>
+  <%= f.text_area :caption %>
+  <%= f.submit 'シェア' %>
+<% end %>

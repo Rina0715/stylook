@@ -1,0 +1,7 @@
+<% @articles.each do |article| %>
+<div>
+  <%= attachment_image_tag article, :image %>
+  <%= image_tag 'fasion.jpg', size: '20x30' %>
+  <p>@<%= article.user.name %></p>
+</div>
+<% end %>
