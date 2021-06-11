@@ -6,22 +6,23 @@
 <!--</div>-->
 <!--<%# end %>-->
 
-<main>
-  <div class = "container">
-    <div class = "row">
-      <div class = "offset-md-1">
-        <% @articles. each do |article| %>
-          <div class = "clearfix" style = "display: inline-block; margin-left: 15px;">
-            <%= link_to article_path(article.id) do %>
-              <div class = "imagephoto">
-                <%= attachment_image_tag article, :image, size: "300x380", fallback: "no_image.jpg"%>
-              </div>
-            <% end %>
-              <h6 class="items-text-name title">@<%= article.user.name %></h6>
-              <!--<h6 class="items-text-price">¥<%#= (item.price).floor %></h6>-->
-          </div>
-        <% end %>
-      </div>
-    </div>
-  </div>
-</main>
+<%= render 'articles/list', articles: @articles %>
+
+<!--<main>-->
+<!--  <div class = "container">-->
+<!--    <div class = "row">-->
+<!--      <div class = "offset-md-1">-->
+<!--        <%# @articles. each do |article| %>-->
+<!--          <div class = "clearfix" style = "display: inline-block; margin-left: 15px;">-->
+<!--            <%#= link_to article_path(article.id) do %>-->
+<!--              <div class = "imagephoto">-->
+<!--                <%#= attachment_image_tag article, :image, size: "300x380", fallback: "no_image.jpg"%>-->
+<!--              </div>-->
+<!--            <%# end %>-->
+<!--              <h6 class="items-text-name title">@<%#= article.user.name %></h6>-->
+<!--          </div>-->
+<!--        <%# end %>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</main>-->

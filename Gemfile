@@ -80,6 +80,3 @@ gem 'dotenv-rails'
 group :production do
   gem 'mysql2'
 end
-
-#ファイルのアップロードを簡単にするためのgem
-gem 'carrierwave', '~> 2.0'

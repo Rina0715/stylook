@@ -1,8 +1,27 @@
-<main>
-  <div class = "container px-5 px-sm-0">
-    <div class = "row">
-      <%= attachment_image_tag @article, :image, size: "500x550", fallback: "no_image.jpg"%>
+
+<div class="post-detail py-5 bg-light">
+  <div class="card w-50 mx-auto mt-4 shadow-lg">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-2">
+          <%= attachment_image_tag @article.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg", class:"mt-3 rounded-circle"; %>
+        </div>
+        <div class="col-10">
+          <%#= link_to user_path(@article.user) do %>
+            <span><i class="fas fa-user"></i><%= @article.user.name %> ｜ </span>
+          <%# end %>
+        </div>
+      </div>
+    </div>
+    <%= attachment_image_tag @article, :image, class:"card-img-top"; %>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-12">
+          <p class="card-text"><%= @article.caption %></p>
+          <!--<span><%#= link_to "#{post_image.post_comments.count} コメント", post_image_path(post_image.id), class:"text-dark" %></span>-->
+        </div>
+      </div>
     </div>
   </div>
-</main>
-
+  <%#= paginate articles %>
+</div>

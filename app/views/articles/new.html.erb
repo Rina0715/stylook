@@ -1,13 +1,25 @@
-<main>
-  <div class = "container px-5 px-sm-0">
-    <%= form_with model: @article, local:true do |f| %>
-      <h5>写真</h5>
-      <%= f.attachment_field :image, placeholder: "商品画像" %>
-      <h5>ジャンル</h5>
-      <%#= f.collection_select :genre_id, @genre, :id, :name,{ prompt: "--選択してください--" }  %>
-      <h5>キャプションを書く</h5>
-      <%= f.text_area :caption %>
-      <%= f.submit 'シェア' %>
-    <% end %>
+<div class="container">
+  <div class="row no-gutters">
+    <div class="col-md-5 col-sm-10 mx-2 mx-sm-auto shadow-lg rounded px-0 my-5">
+      <h5 class="text-dark bg-light p-4 mb-0">新規投稿</h5>
+      <div class="form-body p-4">
+        <% if @article.errors.any? %>
+          <%= @article.errors.count %>件のエラーが発生しました
+          <% @article.errors.full_messages.each do |message| %>
+            <%= message %>
+          <% end %>
+        <% end %>
+        <%= form_with model: @article, local:true do |f| %>
+          <h5>写真</h5>
+          <%= f.attachment_field :image, class: "w-100" %>
+          <h5>ジャンル</h5>
+          <%#= f.collection_select :genre_id, @genre, :id, :name,{ prompt: "--選択してください--" }  %>
+          <h5>キャプションを書く</h5>
+          <%= f.text_area :caption, class:"form-control", rows:"3" %>
+          <%= f.submit 'シェア' %>
+        <% end %>
+      </div>
+    </div>
   </div>
-</main>
+</div>
+
