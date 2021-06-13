@@ -7,21 +7,25 @@ class ArticlesController < ApplicationController
   def create
     @article = Article.new(article_params)
     @article.user_id = current_user.id
-    @article.save
-    redirect_to articles_path
+    if @article.save
+      redirect_to articles_path
+    else
+      render :new
+    end
   end
 
   def index
-    @articles = Article.all
+    @articles = Article.page(params[:page]).reverse_order
   end
 
   def show
     @article = Article.find(params[:id])
+    @post_comment = PostComment.new
   end
 
   def destroy
-    article = Article.find(params[:id])  # データ（レコード）を1件取得
-    article.destroy  # データ（レコード）を削除
+    @article = Article.find(params[:id])  # データ（レコード）を1件取得
+    @article.destroy  # データ（レコード）を削除
     redirect_to articles_path  # 投稿一覧画面へリダイレクト
   end
 

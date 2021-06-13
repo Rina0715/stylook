@@ -17,8 +17,11 @@
       <div class="card-body">
         <div class="row">
           <div class="col-12">
+            <span>
+              <td><%= link_to "コメントする", article_path(article.id), class:"text-dark" %></td>
+              <td>:<%= article.post_comments.count %>件</td>
+            </span>
             <p class="card-text"><%= article.caption %></p>
-            <!--<span><%#= link_to "#{post_image.post_comments.count} コメント", post_image_path(post_image.id), class:"text-dark" %></span>-->
           </div>
         </div>
       </div>
