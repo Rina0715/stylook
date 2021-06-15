@@ -2,14 +2,19 @@
 <div class="post-detail py-5 bg-light">
   <div class="card w-50 mx-auto mt-4 shadow-lg">
     <div class="card-body">
-      <div class="row">
+      <div class="row align-items-center">
         <div class="col-2">
           <%= attachment_image_tag @article.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg", class:"mt-3 rounded-circle"; %>
         </div>
         <div class="col-10">
-          <%#= link_to user_path(@article.user) do %>
-            <span><i class="fas fa-user"></i><%= @article.user.name %> ｜ </span>
-          <%# end %>
+          <span>
+            <%= link_to user_path(@article.user) do %>
+              <i class="fas fa-user"></i><%= @article.user.name %>
+            <% end %>
+          </span>
+          <span>
+            <%= render 'relationships/follow_form', user:@user %>
+          </span>
         </div>
       </div>
     </div>
@@ -17,11 +22,53 @@
     <div class="card-body">
       <div class="row">
         <div class="col-12">
-          <p class="card-text"><%= @article.caption %></p>
-          <!--<span><%#= link_to "#{post_image.post_comments.count} コメント", post_image_path(post_image.id), class:"text-dark" %></span>-->
+          <span><i class="fa fa-comment"></i> <%= link_to "#{@article.post_comments.count}", article_path(@article.id), class:"text-dark" %> ｜ </span>
+            <% if @article.liked_by?(current_user) %>
+            <span>
+              <%= link_to(article_likes_path(@article), class:"text-dark", method: :delete) do %>
+                <i class="fa fa-heart" aria-hidden="true"></i> <%= @article.likes.count %>
+              <% end %>
+            </span>
+            <% else %>
+            <span>
+              <%= link_to(article_likes_path(@article), class:"text-dark", method: :post) do %>
+                <i class="fa fa-heart" aria-hidden="true"></i> <%= @article.likes.count %>
+              <% end %>
+            </span>
+            <% end %>
+            <% if @article.user == current_user %>
+            <span> ｜ </span><%= link_to "削除", article_path(@article), class:"text-dark", method: :delete %>
+            <% end %>
         </div>
+      </div>
+      <p class="card-text">
+        <strong><%= @article.user.name %></strong>  <%= @article.caption %>
+      </p>
+      <hr>
+      <div class="comments card-text">
+        <h4 class="mt-3"><%= @article.post_comments.count %>件コメント</h4>
+        <% @article.post_comments.each do |post_comment| %>
+          <div class="media border mb-3">
+            <%= attachment_image_tag post_comment.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg", class:"bd-placeholder-img align-self-center mx-3" %>
+            <div class="media-body ml-4 p-3">
+              <p><%= post_comment.comment %></p>
+              <% if post_comment.user == current_user %>
+                <%= link_to "削除", article_post_comment_path(post_comment.article, post_comment), method: :delete, class: "btn btn-secondary" %>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      <hr>
+      <div class="new-comment card-text">
+        <%= form_with(model:[@article, @post_comment]) do |f| %>
+          <div class="form-group">
+            <label for="exampleFormControlTextarea1">コメントする</label>
+            <%= f.text_area :comment, rows:'5', class: "form-control",placeholder: "コメントをここに" %>
+          </div>
+          <%= f.submit "送信する", class:"btn btn-lg btn-info mt-2 float-right" %>
+        <% end %>
       </div>
     </div>
   </div>
-  <%#= paginate articles %>
 </div>

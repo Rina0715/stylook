@@ -1,0 +1,17 @@
+<h2>フォロー中</h2>
+<% if @users.exists? %>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= attachment_image_tag user, :profile_image, :fill, 50, 50, fallback: "no-image.jpg", class:"rounded-circle"; %></td>
+        <td>
+          <%= link_to user_path(user) do %>
+            <%= user.name %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+<% else %>
+  <p>ユーザーはいません</p>
+<% end %>

@@ -7,5 +7,12 @@ class Article < ApplicationRecord
   default_scope -> { order(created_at: :desc) }
 
   has_many :post_comments, dependent: :destroy
+  has_many :likes, dependent: :destroy
+  has_many :article_genres, dependent: :destroy
+  has_many :genres, through: :article_genres
+
+  def liked_by?(user)
+    likes.where(user_id: user.id).exists?
+  end
 
 end

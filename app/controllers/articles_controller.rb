@@ -16,11 +16,13 @@ class ArticlesController < ApplicationController
 
   def index
     @articles = Article.page(params[:page]).reverse_order
+    @user = current_user
   end
 
   def show
     @article = Article.find(params[:id])
     @post_comment = PostComment.new
+    @user = current_user
   end
 
   def destroy
@@ -29,10 +31,12 @@ class ArticlesController < ApplicationController
     redirect_to articles_path  # 投稿一覧画面へリダイレクト
   end
 
+
   private
 
   def article_params
     params.require(:article).permit(:image, :caption)
   end
+
 
 end
