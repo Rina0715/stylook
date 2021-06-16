@@ -8,39 +8,39 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-  <header class="navbar navbar-fixed-top header">
-    <div class="container">
+  <!--<header class="navbar navbar-fixed-top header">-->
+  <!--  <div class="container">-->
 
-      <nav class="nav navbar-nav navbar-left">
-        <%= link_to root_path do %>
+  <!--    <nav class="nav navbar-nav navbar-left">-->
+  <!--      <%#= link_to root_path do %>-->
         <%#= image_tag "logo3.jpg", :size =>"170x170" %>
-        <% end %>
-      </nav>
+  <!--      <%# end %>-->
+  <!--    </nav>-->
 
-
-      <nav>
-        <ul class="nav navbar-right">
-          <% if user_signed_in? %>
-            <li>
-              <%= link_to '投稿', new_article_path, class: "btn btn-outline-secondary" %>
-            </li>
-            <li>
-              <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-outline-secondary" %>
-            </li>
-            <li>
-            <%= link_to 'マイページ', user_path(current_user.id), class: "btn btn-outline-secondary" %>
-            </li>
-          <% else %>
-            <li>
-              <%= link_to "新規登録", new_user_registration_path, class: "btn btn-outline-secondary" %>
-            </li>
-            <li>
-              <%= link_to "ログイン", new_user_session_path, class: "btn btn-outline-secondary" %>
-            </li>
-          <% end %>
-        </ul>
-      </nav>
-  </header>
+    <body>
+      <%= render 'layouts/header' %>
+      <!--  <ul class="nav navbar-right">-->
+      <!--    <%# if user_signed_in? %>-->
+      <!--      <li>-->
+      <!--        <%#= link_to '投稿', new_article_path, class: "btn btn-outline-secondary" %>-->
+      <!--      </li>-->
+            <!--<li>-->
+            <!--  <%#= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-outline-secondary" %>-->
+            <!--</li>-->
+      <!--      <li>-->
+      <!--      <%#= link_to 'マイページ', user_path(current_user.id), class: "btn btn-outline-secondary" %>-->
+      <!--      </li>-->
+      <!--    <%# else %>-->
+      <!--      <li>-->
+      <!--        <%#= link_to "新規登録", new_user_registration_path, class: "btn btn-outline-secondary" %>-->
+      <!--      </li>-->
+      <!--      <li>-->
+      <!--        <%#= link_to "ログイン", new_user_session_path, class: "btn btn-outline-secondary" %>-->
+      <!--      </li>-->
+      <!--    <%# end %>-->
+      <!--  </ul>-->
+      <!--</nav>-->
+  <!--</header>-->
         <%= yield %>
-      </nav>
+    </body>
 </html>

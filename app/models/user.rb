@@ -9,6 +9,10 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
   attachment :profile_image
 
+  # def active_for_authentication?
+  #   super && (self.is_valid == false)
+  # end
+
   has_many :reverse_of_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
   has_many :followers, through: :reverse_of_relationships, source: :follower
   has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy

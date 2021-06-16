@@ -16,9 +16,10 @@
             </div>
             <%= f.text_field :name, autofocus: true, class:"form-control", id:"inputName", placeholder:"名前"%>
           </div>
-          <%= f.text_area :caption, class:"form-control", rows:"3", placeholder:"自己紹介" %>
-          <%= f.submit "変更を保存", class:"btn btn-lg btn-block btn-info mt-5" %>
-          <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-outline-secondary" %>
+          <%= f.text_area :caption, class:"form-control", rows:"4", placeholder:"自己紹介" %>
+          <%= f.submit "変更を保存", class:"btn btn-secondary btn-block btn-lg mt-5" %>
+          <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-outline-secondary btn-block" %>
+          <%= link_to "退会する", user_users_withdrawal_path(@user), method: :get, class: "btn btn-outline-secondary btn-block" %>
         <% end %>
       </div>
     </div>

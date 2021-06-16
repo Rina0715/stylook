@@ -15,7 +15,7 @@ class UsersController < ApplicationController
     @user.update(user_params)
     redirect_to user_path(@user.id)
   end
-  
+
   def following
     @user = User.find(params[:id])
     @users = @user.following
@@ -27,6 +27,19 @@ class UsersController < ApplicationController
     @users = @user.followers
     render 'relationships/follow_form'
   end
+
+  def destroy
+    @user = current_user
+    @user.update(is_valid: true)
+    reset_session
+    flash[:notice] = "ありがとうございました。またのご利用を心よりお待ちしております。"
+    redirect_to root_path
+  end
+
+  def withdrawal
+    @user = current_user
+  end
+
 
   private
 

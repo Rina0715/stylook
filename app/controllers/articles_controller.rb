@@ -16,7 +16,6 @@ class ArticlesController < ApplicationController
 
   def index
     @articles = Article.page(params[:page]).reverse_order
-    @user = current_user
   end
 
   def show

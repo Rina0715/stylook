@@ -1,0 +1,32 @@
+<header>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+      <a class="navbar-brand" href="/"><span>Stylook</span></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav ml-auto">
+          <% if user_signed_in? %>
+            <li>
+              <%= link_to "", new_article_path, class: "fas fa-solid fa-camera nav-link fa-lg" %>
+            </li>
+            <li>
+              <%= link_to "", articles_path, class: "fas fa-home nav-link fa-lg" %>
+            </li>
+            <li>
+              <%= link_to "", user_path(current_user.id), class: "fas fa-solid fa-gear nav-link fa-lg" %>
+            </li>
+          <% else %>
+            <li>
+              <%= link_to "Signup", new_user_registration_path, class: "fas fa-user-plus nav-link fa-lg" %>
+            </li>
+            <li>
+              <%= link_to "Login", new_user_session_path, class: "fas fa-sign-in-alt nav-link fa-lg" %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
