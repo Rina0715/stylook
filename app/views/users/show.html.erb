@@ -13,8 +13,13 @@
         <%= @user.followings.count %>
       <% end %>
     </span>
+    <div>
       <% if @user.id == current_user.id %>
         <p><%= link_to "プロフィール編集", edit_user_path(@user), class:"btn btn-outline-secondary btn-block" %></p>
       <% end %>
+    </div>
+    <div>
+      <%= @user.caption %>
+    </div>
 </div>
 <%= render 'articles/list', articles: @articles %>

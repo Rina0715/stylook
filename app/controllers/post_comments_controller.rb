@@ -5,6 +5,7 @@ class PostCommentsController < ApplicationController
     comment = current_user.post_comments.new(post_comment_params)
     comment.article_id = article.id
     comment.save
+    @article.create_notification_comment!(current_user, @post_comment.id)
     redirect_to article_path(article)
   end
 

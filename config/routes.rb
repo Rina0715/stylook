@@ -7,7 +7,12 @@ Rails.application.routes.draw do
   resources :articles, only: [:new, :create, :index, :show, :destroy] do
     resource :likes, only: [:create, :destroy]
     resources :post_comments, only: [:create, :destroy]
+    collection do
+      get 'search'
+    end
+    resources :favorites, only: [:create, :destroy]
   end
+
   resources :users, only: [:show, :edit, :update] do
     resource :relationships, only: [:create, :destroy]
     get 'followings' => 'relationships#followings', as: 'followings'
@@ -15,5 +20,6 @@ Rails.application.routes.draw do
     patch '/users/withdrawal' => 'users#destroy'
     get '/users/withdrawal' => 'users#withdrawal'
   end
+  resources :notifications, only: :index
 
 end

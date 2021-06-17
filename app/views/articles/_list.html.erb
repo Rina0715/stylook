@@ -8,9 +8,10 @@
           </div>
           <div class="col-10">
             <span><i class="fas fa-user"></i><%= article.user.name %></span>
-            <!--＿＿＿＿＿＿＿＿＿＿＿＿フォロー機能解決する！！！！！！！＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿-->
             <span>
-              <%= render 'relationships/follow_form', user: article.user %>
+              <% if current_user.present? %>
+                <%= render 'relationships/follow_form', user: article.user %>
+              <% end %>
             </span>
           </div>
         </div>
@@ -27,28 +28,38 @@
               <% end %>
             </span>
     <!--＿＿＿＿＿＿＿＿＿非同期がうまくいかない＿＿＿＿＿＿＿＿＿-->
-            <!--<span>-->
-            <!--  <div id="likes_buttons_<%#= article.id %>">-->
-            <!--    <%#= render partial: 'likes/like', locals: { article: article} %>-->
-            <!--  </div>-->
-            <!--</span>-->
-            <% if article.liked_by?(current_user) %>
-            <span>
-              <%= link_to(article_likes_path(article), class:"text-dark", method: :delete) do %>
-                <i class="fa fa-heart" aria-hidden="true"></i> <%= article.likes.count %>
-              <% end %>
-            </span>
-            <% else %>
-            <span>
-              <%= link_to(article_likes_path(article), class:"text-dark", method: :post) do %>
-                <i class="fa fa-heart" aria-hidden="true"></i> <%= article.likes.count %>
-              <% end %>
-            </span>
-            <% end %>
 
-            <% if article.user == current_user %>
-              <%= link_to "削除", article_path(article), class:"text-dark", method: :delete %>
-            <% end %>
+            <span>
+              <% if current_user.present? %>
+                <div id="likes_buttons_<%= article.id %>">
+                  <%= render partial: 'likes/like', locals: { article: article} %>
+                </div>
+              <% end %>
+            </span>
+            <!--<%# if article.liked_by?(current_user) %>-->
+            <!--<span>-->
+            <!--  <%#= link_to(article_likes_path(article), class:"text-dark", method: :delete, remote: true) do %>-->
+            <!--    <i class="fa fa-heart" aria-hidden="true"></i> <%#= article.likes.count %>-->
+            <!--  <%# end %>-->
+            <!--</span>-->
+            <!--<%# else %>-->
+            <!--<span>-->
+            <!--  <%#= link_to(article_likes_path(article), class:"text-dark", method: :post, remote: true) do %>-->
+            <!--    <i class="fa fa-heart" aria-hidden="true"></i> <%#= article.likes.count %>-->
+            <!--  <%# end %>-->
+            <!--</span>-->
+            <!--<%# end %>-->
+
+            <div class="text-right">
+      <!--___________________お気に入りがうまくいかない__________________-->
+              <!--<div class='star-btn' id="favorite_<%#= @article.id %>">-->
+              <!--  <%#= render "favorites/favorite", article: @article %>-->
+              <!--</div>-->
+
+              <% if article.user == current_user %>
+                <%= link_to "削除", article_path(article), class:"text-dark", method: :delete %>
+              <% end %>
+            </div>
             <p class="card-text">
               <strong><%= article.user.name %></strong>  <%= article.caption %>
             </p>

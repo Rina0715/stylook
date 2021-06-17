@@ -12,7 +12,6 @@
               <i class="fas fa-user"></i><%= @article.user.name %>
             <% end %>
           </span>
-<!--＿＿＿＿＿＿＿＿＿＿＿＿フォロー機能解決する！！！！！！！＿＿＿＿＿＿＿＿＿＿＿＿-->
           <span>
             <%= render 'relationships/follow_form', user:@user %>
           </span>
@@ -23,20 +22,32 @@
     <div class="card-body">
       <div class="row">
         <div class="col-12">
-          <span><i class="fa fa-comment"></i> <%= link_to "#{@article.post_comments.count}", article_path(@article.id), class:"text-dark" %> ｜ </span>
-            <% if @article.liked_by?(current_user) %>
+          <span><i class="fa fa-comment"></i> <%= link_to "#{@article.post_comments.count}", article_path(@article.id), class:"text-dark" %>  </span>
+
             <span>
-              <%= link_to(article_likes_path(@article), class:"text-dark", method: :delete) do %>
-                <i class="fa fa-heart" aria-hidden="true"></i> <%= @article.likes.count %>
-              <% end %>
+              <div id="likes_buttons_<%= @article.id %>">
+                <%= render partial: 'likes/like', locals: { article: @article} %>
+              </div>
             </span>
-            <% else %>
-            <span>
-              <%= link_to(article_likes_path(@article), class:"text-dark", method: :post) do %>
-                <i class="fa fa-heart" aria-hidden="true"></i> <%= @article.likes.count %>
-              <% end %>
-            </span>
-            <% end %>
+            <!--<%# if @article.liked_by?(current_user) %>-->
+            <!--<span>-->
+            <!--  <%#= link_to(article_likes_path(@article), class:"text-dark", method: :delete) do %>-->
+            <!--    <i class="fa fa-heart" aria-hidden="true"></i> <%#= @article.likes.count %>-->
+            <!--  <%# end %>-->
+            <!--</span>-->
+            <!--<%# else %>-->
+            <!--<span>-->
+            <!--  <%#= link_to(article_likes_path(@article), class:"text-dark", method: :post) do %>-->
+            <!--    <i class="fa fa-heart" aria-hidden="true"></i> <%#= @article.likes.count %>-->
+            <!--  <%# end %>-->
+            <!--</span>-->
+            <!--<%# end %>-->
+            <!--<div class="text-right">-->
+      <!--___________________お気に入りがうまくいかない__________________-->
+              <!--<div class='star-btn' id="favorite_<%#= @article.id %>">-->
+              <!--  <%#= render "favorites/favorite", article: @article %>-->
+              <!--</div>-->
+
             <% if @article.user == current_user %>
             <span> ｜ </span><%= link_to "削除", article_path(@article), class:"text-dark", method: :delete %>
             <% end %>
