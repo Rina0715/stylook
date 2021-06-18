@@ -1,7 +1,7 @@
 
 <div class="post-detail py-5 bg-light">
   <div class="card w-50 mx-auto mt-4 shadow-lg">
-    <div class="card-body">
+    <div class="card-header">
       <div class="row align-items-center">
         <div class="col-2">
           <%= attachment_image_tag @article.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg", class:"mt-3 rounded-circle"; %>
@@ -21,13 +21,14 @@
     <%= attachment_image_tag @article, :image, class:"card-img-top"; %>
     <div class="card-body">
       <div class="row">
-        <div class="col-12">
+        <div class="col-10">
           <span><i class="fa fa-comment"></i> <%= link_to "#{@article.post_comments.count}", article_path(@article.id), class:"text-dark" %>  </span>
-
             <span>
-              <div id="likes_buttons_<%= @article.id %>">
-                <%= render partial: 'likes/like', locals: { article: @article} %>
-              </div>
+              <% if current_user.present? %>
+                <div id="likes_buttons_<%= @article.id %>">
+                  <%= render partial: 'likes/like', locals: { article: @article} %>
+                </div>
+              <% end %>
             </span>
             <!--<%# if @article.liked_by?(current_user) %>-->
             <!--<span>-->
@@ -42,36 +43,45 @@
             <!--  <%# end %>-->
             <!--</span>-->
             <!--<%# end %>-->
-            <!--<div class="text-right">-->
       <!--___________________お気に入りがうまくいかない__________________-->
-              <!--<div class='star-btn' id="favorite_<%#= @article.id %>">-->
-              <!--  <%#= render "favorites/favorite", article: @article %>-->
-              <!--</div>-->
-
+              <!--<%# if current_user.present? %>-->
+              <!--  <div class='star-btn' id="favorite_<%#= @article.id %>">-->
+              <!--    <%#= render "favorites/favorite", article: @article %>-->
+              <!--  </div>-->
+              <!--<%# end %>-->
+          <div class="text-right">
             <% if @article.user == current_user %>
-            <span> ｜ </span><%= link_to "削除", article_path(@article), class:"text-dark", method: :delete %>
+              <%= link_to "削除", article_path(@article), class:"text-dark", method: :delete %>
             <% end %>
+          </div>
+          <div class="col-sm-11">
+            <p class="card-text">
+              <strong><%= @article.user.name %></strong>  <%= @article.caption %>
+            </p>
+          </div>
         </div>
       </div>
-      <p class="card-text">
-        <strong><%= @article.user.name %></strong>  <%= @article.caption %>
-      </p>
       <hr>
-      <div class="comments card-text">
-        <h4 class="mt-3"><%= @article.post_comments.count %>件コメント</h4>
-        <% @article.post_comments.each do |post_comment| %>
-          <div class="media border mb-3">
-            <%= attachment_image_tag post_comment.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg", class:"bd-placeholder-img align-self-center mx-3" %>
-            <div class="media-body ml-4 p-3">
-              <p><%= post_comment.comment %></p>
-              <% if post_comment.user == current_user %>
-                <%= link_to "削除", article_post_comment_path(post_comment.article, post_comment), method: :delete, class: "btn btn-secondary" %>
-              <% end %>
+      <div class="col-sm-11">
+        <div class="comments card-text">
+          <h6 class="mt-3"><%= @article.post_comments.count %>件コメント</h6>
+          <% @article.post_comments.each do |post_comment| %>
+            <div class="media border mb-3">
+              <%= attachment_image_tag post_comment.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg", class:"mt-3 rounded-circle"; %>
+              <div class="media-body ml-4 p-3">
+                <p><%= post_comment.comment %></p>
+                <div class="text-right">
+                  <% if post_comment.user == current_user %>
+                    <%= link_to "削除", article_post_comment_path(post_comment.article, post_comment), method: :delete, class: "btn btn-secondary" %>
+                  <% end %>
+                </div>
+              </div>
             </div>
-          </div>
-        <% end %>
+          <% end %>
+        </div>
       </div>
-      <hr>
+    </div>
+    <div class="col-sm-11">
       <div class="new-comment card-text">
         <%= form_with(model:[@article, @post_comment]) do |f| %>
           <div class="form-group">

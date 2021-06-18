@@ -1,6 +1,10 @@
 class SearchController < ApplicationController
 
+  def edit
+  end
+
   def search
+    @articles = @genre.articles
     @model = params["search"]["model"]             #選択したmodelを@modelに代入
     @value = params["search"]["value"]             #検索にかけた文字列valueを@valueに代入
     @how = params["search"]["how"]                 #選択した検索方法howを@howに代入
@@ -13,31 +17,39 @@ class SearchController < ApplicationController
     if model == 'user'                        #modelがuserの場合の処理
       User.where(name: value)                 #whereでvalueと完全一致するnameを探す
     elsif model == 'genre'
-      Genre.where(title: value)
+      Genre.where(name: value)
+    elsif model == 'tag'
+      Tag.where(name: value)
     end
   end
 
-  def forward(model, value)
-    if model == 'user'
-      User.where("name LIKE ?", "#{value}%")     #前方一致    モデル名.where("カラム名 LIKE ?", "値%")
-    elsif model == 'genre'
-      Genre.where("title LIKE ?", "#{value}%")
-    end
-  end
+  # def forward(model, value)
+  #   if model == 'user'
+  #     User.where("name LIKE ?", "#{value}%")     #前方一致    モデル名.where("カラム名 LIKE ?", "値%")
+  #   elsif model == 'genre'
+  #     Genre.where("name LIKE ?", "#{value}%")
+  #   elsif model == 'tag'
+  #     Tag.where("name LIKE ?", "#{value}%")
+  #   end
+  # end
 
-  def backward(model, value)
-    if model == 'user'
-      User.where("name LIKE ?", "%#{value}")     #後方一致    モデル名.where("カラム名 LIKE ?", "%値")
-    elsif model == 'genre'
-      Genre.where("title LIKE ?", "%#{value}")
-    end
-  end
+  # def backward(model, value)
+  #   if model == 'user'
+  #     User.where("name LIKE ?", "%#{value}")     #後方一致    モデル名.where("カラム名 LIKE ?", "%値")
+  #   elsif model == 'genre'
+  #     Genre.where("name LIKE ?", "%#{value}")
+  #   elsif model == 'tag'
+  #     Tag.where("name LIKE ?", "%#{value}")
+  #   end
+  # end
 
   def partical(model, value)
     if model == 'user'
       User.where("name LIKE ?", "%#{value}%")    #部分一致    モデル名.where("カラム名 LIKE ?", "%値%")
     elsif model == 'genre'
-      Genre.where("title LIKE ?", "%#{value}%")
+      Genre.where("name LIKE ?", "%#{value}%")
+    elsif model == 'tag'
+      Tag.where("name LIKE ?", "%#{value}%")
     end
   end
 

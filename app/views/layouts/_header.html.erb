@@ -1,7 +1,7 @@
 <header>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
-      <a class="navbar-brand" href="/"><%#= image_tag "logo_2.jpg", :size =>"170x170" %></a>
+      <a class="navbar-brand" href="/"><%= image_tag "logo3.png" %></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -9,7 +9,10 @@
         <ul class="navbar-nav ml-auto">
           <% if user_signed_in? %>
             <li>
-              <%= link_to "", new_article_path, class: "fas fa-plus-square nav-link fa-lg" %>
+              <%= link_to "Search", edit_search_path(current_user.id), class: "fas fa-search nav-link fa-lg" %>
+            </li>
+            <li>
+              <%= link_to "Post", new_article_path, class: "fas fa-plus-square nav-link fa-lg" %>
             </li>
             <li>
               <%= link_to(notifications_path) do %>
@@ -24,10 +27,10 @@
               <% end %>
             </li>
             <li>
-              <%= link_to "", articles_path, class: "fas fa-home nav-link fa-lg" %>
+              <%= link_to "Home", articles_path, class: "fas fa-home nav-link fa-lg" %>
             </li>
             <li>
-              <%= link_to "", user_path(current_user.id), class: "fas fa-portrait nav-link fa-lg" %>
+              <%= link_to "Mypage", user_path(current_user.id), class: "fas fa-portrait nav-link fa-lg" %>
             </li>
           <% else %>
             <li>

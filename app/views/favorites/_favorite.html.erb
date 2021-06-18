@@ -1,5 +1,5 @@
 <% if !Favorite.exists?(user_id: current_user.id, article_id: article.id) %>
-  <%= link_to article_favorites_path(article.id), method: :post, remote: true, class:"like-btn" do %>
+  <%= link_to article_favorites_path(article.user_id), method: :post, remote: true, class:"like-btn" do %>
     <i class="fas fa-star star-icon1"></i>
   <% end %>
   <span class="star-count1"><%= article.favorites.count %></span>

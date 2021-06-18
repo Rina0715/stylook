@@ -11,9 +11,9 @@
         <% end %>
         <%= form_with model: @article, local:true do |f| %>
           <h5>写真</h5>
-          <%= f.attachment_field :image, class: "w-100" %>
+            <%= f.attachment_field :image, class: "w-100" %>
           <h5>ジャンル</h5>
-          <%#= f.collection_select :genre_id, @genre, :id, :name,{ prompt: "--選択してください--" }  %>
+            <%= f.collection_select :genre_id, @genre, :id, :name,{ prompt: "--選択してください--" } %>
           <h5>キャプションを書く</h5>
           <%= f.text_area :caption, class:"form-control", rows:"3" %>
           <%= f.submit 'シェア' %>
