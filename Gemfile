@@ -63,12 +63,17 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 #ユーザー認証用のgem
 gem 'devise'
+
 #画像投稿用のgem
 gem "refile", require: "refile/rails", github: 'manfe/refile'
+
 #画像加工用のgem
 gem "refile-mini_magick"
+gem 'carrierwave'
+
 #ページング機能のgem
 gem 'kaminari','~> 1.2.1'
+
 #レイアウト用gem
 gem 'bootstrap', '~> 4.5'
 gem 'jquery-rails'

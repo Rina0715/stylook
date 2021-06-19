@@ -8,8 +8,12 @@ class FavoritesController < ApplicationController
   end
   def destroy
     @article = Article.find(params[:article_id])
-    @favorite = Favorite.find_by(user_id: current_user.id, favorite_id: @favorite.id)
+    @favorite = Favorite.find_by(user_id: current_user.id, article_id: @article.id)
     @favorite.destroy
+  end
+
+  def index
+    @article = Article.find(params[:article_id])
   end
 
 

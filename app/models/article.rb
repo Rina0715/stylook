@@ -9,7 +9,7 @@ class Article < ApplicationRecord
 
   has_many :post_comments, dependent: :destroy
   has_many :likes, dependent: :destroy
-  has_many :article_genres, dependent: :destroy
+  # has_many :article_genres, dependent: :destroy
   has_many :genres, through: :article_genres
   has_many :notifications, dependent: :destroy
   has_many :favorites, dependent: :destroy
