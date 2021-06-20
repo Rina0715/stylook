@@ -4,7 +4,7 @@ class SearchController < ApplicationController
   end
 
   def search
-    @articles = @genre.articles
+    # @articles = @genre.articles
     @model = params["search"]["model"]             #選択したmodelを@modelに代入
     @value = params["search"]["value"]             #検索にかけた文字列valueを@valueに代入
     @how = params["search"]["how"]                 #選択した検索方法howを@howに代入

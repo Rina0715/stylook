@@ -13,7 +13,9 @@ class FavoritesController < ApplicationController
   end
 
   def index
-    @article = Article.find(params[:article_id])
+    @user = User.find(params[:user_id])
+    @articles = @user.favorites
+    # @article = Article.find(params[:article_id])
   end
 
 

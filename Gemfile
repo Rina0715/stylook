@@ -69,7 +69,6 @@ gem "refile", require: "refile/rails", github: 'manfe/refile'
 
 #画像加工用のgem
 gem "refile-mini_magick"
-gem 'carrierwave'
 
 #ページング機能のgem
 gem 'kaminari','~> 1.2.1'

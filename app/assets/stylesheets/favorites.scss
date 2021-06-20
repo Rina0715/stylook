@@ -2,12 +2,19 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.favorite-image{
-    /*画像の表示サイズ*/
-    width: 200px;
-    height: 200px;
-    /*画像表示の仕方*/
-    object-fit: cover;
-    /*画像表樹の基準*/
-    object-position: 0 0;
+.favorite-image {
+  width: 200px;
+  text-align: center;
+  margin: 20px 20px;
 }
+
+
+// .favorite-image{
+//     /*画像の表示サイズ*/
+//     width: 200px;
+//     height: 200px;
+//     /*画像表示の仕方*/
+//     object-fit: cover;
+//     /*画像表樹の基準*/
+//     object-position: 0 0;
+// }

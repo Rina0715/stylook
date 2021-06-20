@@ -8,6 +8,10 @@
           <% @users.each do |user| %>
             <tr>
               <td><%= attachment_image_tag user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg", class:"rounded-circle"; %></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
               <td>
                 <%= link_to user_path(user) do %>
                   <%= user.name %>

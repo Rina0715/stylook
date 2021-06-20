@@ -15,8 +15,7 @@ class ArticlesController < ApplicationController
     end
   end
 
-  def index
-                                          #order(created_at: :desc)で投稿を新着順に！
+  def index                                   #order(created_at: :desc)で投稿を新着順に！
     @articles = Article.page(params[:page]).order(created_at: :desc)
   end
 
@@ -38,5 +37,6 @@ class ArticlesController < ApplicationController
   def article_params
     params.require(:article).permit(:image, :caption)
   end
+
 
 end

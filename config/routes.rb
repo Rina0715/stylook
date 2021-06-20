@@ -15,7 +15,7 @@ Rails.application.routes.draw do
     collection do
       get 'search'
     end
-    resources :favorites, only: [:create, :destroy, :index]
+    resources :favorites, only: [:create, :destroy]
   end
 
   resources :users, only: [:show, :edit, :update] do
@@ -24,7 +24,9 @@ Rails.application.routes.draw do
     get 'followers' => 'relationships#followers', as: 'followers'
     patch '/users/withdrawal' => 'users#destroy'
     get '/users/withdrawal' => 'users#withdrawal'
+    resources :myfavorites, only: [:index]
   end
+
   resources :notifications, only: :index
 
 end
