@@ -1,12 +1,21 @@
 <div class="row">
   <div class="col-xs-6 col-xs-offset-3 text-center" style="margin-top: 25px;">
-    <% if user_signed_in? %>
-      <%= form_with url:search_path, method: :get, local: true do |f| %>
-        <%= f.text_field 'search[value]' %>
-        <%= f.select 'search[model]', options_for_select({ "アカウント" => "user", "ジャンル" => "genre", "タグ" => "#tag" }) %>
-        <%= f.select 'search[how]', options_for_select({ "完全一致" => "match", "部分一致" => "partical"  }) %>
-        <%= f.submit :"検索" %>
-      <% end %>
-    <% end %>
+    <!--<%#= search_form_for @search do |f| %>-->
+    <!--  <div class="form-group">-->
+    <!--    <%#= f.label :name_cont, "Name" %>-->
+    <!--    <%#= f.text_field :name_cont, class: "form-control" %>-->
+    <!--  </div>-->
+    <!--  <div class="actions"><%#= f.submit "Search" %></div>-->
+    <!--<%# end %>-->
+    
+    
+    <%# if user_signed_in? %>
+      <%#= form_with url:search_path, method: :get, local: true do |f| %>
+        <%#= f.text_field 'search[value]' %>
+        <%#= f.select 'search[model]', options_for_select({ "アカウント" => "user", "ジャンル" => "genre", "タグ" => "#tag" }) %>
+        <%#= f.select 'search[how]', options_for_select({ "完全一致" => "match", "部分一致" => "partical"  }) %>
+        <%#= f.submit :"検索" %>
+      <%# end %>
+    <%# end %>
   </div>
 </div>
