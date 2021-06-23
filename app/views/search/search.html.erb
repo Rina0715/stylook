@@ -1,26 +1,13 @@
-<!--<%#= render "search/edit" %>-->
-<!--<div class='main'>-->
-  <%# 商品一覧 %>
-<!--  <div class='article-contents'>-->
-<!--    <div class="article-container">-->
-<!--      <ul class='article-lists'>-->
-<!--        <%# if @q.name_cont != nil %>-->
-<!--          <h3 class="subtitle"><%#= "#{@q.name_cont} の検索結果" %></h3>-->
-<!--        <%# else %>-->
-<!--          <h3 class="subtitle"><%#= "検索結果" %></h3>-->
-<!--        <%# end %>-->
-<!--        <%#= render partial:"article", collection: @articles, locals: {article: @article} %>-->
-<!--      </ul>-->
-<!--    </div>-->
-<!--  </div>-->
-  <%# /商品一覧 %>
-<!--</div>-->
-<%#= render "shared/footer" %>
-
-
-
-
-
+<div class="container">
+  <div class="col-xs-12">
+    <% if @articles.empty? %>
+      <h2>該当はありません</h2>
+    <% end %>
+      <div>
+        <%= render 'articles/list', articles: @articles %>
+      </div>
+  </div>
+</div>
 
 <!--<div class="container">-->
 <!--  <div class="col-xs-12">-->
@@ -51,13 +38,13 @@
 <!--          </tr>-->
 <!--        </tbody>-->
 <!--      <%# end %>-->
-<!--      <%# elsif @model == "tag" %>-->
-<!--      <h2>Tags search for '<%#= @value %>'</h2>-->
-<!--      <%# @datas.each do |tag| %>-->
+<!--      <%# elsif @model == "season" %>-->
+<!--      <h2>Seasons search for '<%#= @value %>'</h2>-->
+<!--      <%# @datas.each do |season| %>-->
 <!--        <tbody>-->
 <!--          <tr>-->
 <!--            <th>-->
-<!--              <%#= attachment_image_tag tag, :profile_image, :fill, 50, 50, fallback: "no_image.jpg", class:"mt-3 rounded-circle"; %>-->
+<!--              <%#= render 'articles/list', articles: @articles %>-->
 <!--            </th>-->
 <!--          </tr>-->
 <!--        </tbody>-->
@@ -65,3 +52,4 @@
 <!--    <%# end %>-->
 <!--  </div>-->
 <!--</div>-->
+

@@ -18,19 +18,29 @@
  @import 'font-awesome';
 
 
-// .favorite-image {
-//   width: 200px;
-//   text-align: center;
-//   margin: 20px 20px;
-// }
 
-// .favorite-image{
-//     /*画像の表示サイズ*/
-//     width: 200px;
-//     height: 200px;
-//     /*画像表示の仕方*/
-//     object-fit: cover;
-//     /*画像表樹の基準*/
-//     object-position: 0 0;
-// }
+.top-main-visual {
+  width: 900px;
+  height: 900px;
+  text-align: center;
+  margin: 20px auto;
+  background-image: url("troy-wade-xXfQyHRSJTU-unsplash.jpg");
+  background-size: 100%;
+}
+
+.top-main-visual-content {
+  height: 900px;
+  margin: 5px 0;
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+.top-main-visual-text {
+  padding-top: 350px;
+  font-size: 38px;
+  font-weight: bold;
+}
+
+body {
+  font-family: "Georgia";
+}
 

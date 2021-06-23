@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-3 offset-md-1">
+      <h6>シーズン一覧・追加</h6>
+    </div>
+  </div>
+
+    <%= form_with model:@season, url: seasons_path, local:true do |f| %>
+    <div class="row">
+      <div class="col-2">シーズン名</div>
+      <div class="col-3"><%= f.text_field :name %></div>
+      <div class="col-3"><%= f.submit '新規登録', class: "btn btn-outline-secondary" %></div>
+    </div>
+    <% end %>
+
+    <div class="row">
+      <div class="col-md-9">
+      <table class="table">
+        <thead class="thead-light">
+          <tr>
+            <th colspan="3">シーズン</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @seasons.each do |g| %>
+          <tr>
+            <td colspan="2"><%= g.name %></td>
+            <td colspan="2"><%= link_to '編集する', edit_season_path(g.id), class: "btn btn-outline-secondary" %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+      </div>
+    </div>
+
+
+</div>

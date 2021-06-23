@@ -9,12 +9,22 @@ class GenresController < ApplicationController
   def create
     # 特定（今）のユーザーだけが新規保存できるようにする記述がわからない
     genre = Genre.new(genre_params)
-    if genre.save(genre_params)
-      flash[:notice] = "保存ができました！"
+    if Genre.where(name: genre.name).exists?
+      # chouhuku error
+      #byebug
+#      flash.now[:alert] = "重複エラーです・・・"
+      flash[:alert] = "重複エラーです"
+      # render :index
       redirect_to genres_path
     else
-      flash.now[:alert] = "保存ができませんでした・・・"
-      render :index
+    # save
+      if genre.save(genre_params)
+        flash[:notice] = "保存ができました！"
+        redirect_to genres_path
+      else
+        flash.now[:alert] = "保存ができませんでした・・・"
+        render :index
+      end
     end
   end
 
@@ -38,6 +48,15 @@ class GenresController < ApplicationController
       flash.now[:alert] = "更新ができませんでした・・・"
     end
   end
+
+
+  # def destroy
+  #   @genre = Genre.find(params[:id])  # データ（レコード）を1件取得
+  #   @genre.destroy  # データ（レコード）を削除
+  #   redirect_to genres_path  # 投稿一覧画面へリダイレクト
+  # end
+
+
 
   private
   def genre_params

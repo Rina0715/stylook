@@ -6,8 +6,10 @@ Rails.application.routes.draw do
 
   resources :search, only: :edit
   get '/search' => 'search#search'
+  get '/filter' => 'search#filter'
 
   resources :genres
+  resources :seasons
 
   resources :articles, only: [:new, :create, :index, :show, :destroy] do
     resource :likes, only: [:create, :destroy]

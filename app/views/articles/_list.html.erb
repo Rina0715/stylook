@@ -35,7 +35,6 @@
                 </div>
               <% end %>
             </span>
-      <!--___________________お気に入りがうまくいかない__________________-->
             <span>
               <% if current_user.present? %>
                 <div class='star-btn' id="favorite_<%= article.id %>">
@@ -43,12 +42,6 @@
                 </div>
               <% end %>
             </span>
-
-            <!--<div class="text-right">-->
-            <!--  <%# if article.user == current_user %>-->
-            <!--    <%#= link_to "削除", article_path(article), class:"text-dark", method: :delete %>-->
-            <!--  <%# end %>-->
-            <!--</div>-->
             <p class="card-text">
               <strong><%= article.user.name %></strong>  <%= article.caption %>
             </p>

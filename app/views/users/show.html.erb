@@ -4,18 +4,18 @@
       <strong><%= @user.name %></strong>
     </span>
     <span>フォロワー
-    　<%= link_to user_followers_path(@user) do %>
+      <%= link_to user_followers_path(@user) do %>
         <%= @user.followers.count %>
       <% end %>
     </span>
     <span>フォロー中
-    　<%= link_to user_followings_path(@user) do %>
+      <%= link_to user_followings_path(@user) do %>
         <%= @user.followings.count %>
       <% end %>
     </span>
     <% if @user == current_user %>
     <span>お気に入り
-    　<%= link_to user_myfavorites_path(@user) do %>
+      <%= link_to user_myfavorites_path(@user) do %>
         <%= @user.favorites.count %>
       <% end %>
     </span>

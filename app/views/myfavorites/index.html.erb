@@ -3,13 +3,13 @@
     <div class='col-12'>
       <h2>保存済み</h2>
       <div>
-      　<% @myfavorites.each do |myfavorite| %>
-      　　<span>
+        <% @myfavorites.each do |myfavorite| %>
+          <span>
             <%= link_to article_path(myfavorite.article.id) do %>
               <%= attachment_image_tag myfavorite.article, :image, class: 'favorite-image' %>
             <% end %>
           </span>
-      　<% end %>
+        <% end %>
       </div>
     </div>
   </div>

@@ -2,7 +2,7 @@ class ArticlesController < ApplicationController
 
   def new
     @article = Article.new
-    @genre = Genre.all
+    @genres = Genre.all
   end
 
   def create
@@ -35,7 +35,7 @@ class ArticlesController < ApplicationController
   private
 
   def article_params
-    params.require(:article).permit(:image, :caption)
+    params.require(:article).permit(:image, :caption, :genre_id, :season)
   end
 
 

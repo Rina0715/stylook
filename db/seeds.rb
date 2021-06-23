@@ -1,7 +1,28 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+
+Article.create(user:'kaylee', genre:'WOMENS', season: 'Spring/Summer')
+Article.create(user:'kaylee', genre:'WOMENS', season: 'Autumn/Winter')
+
+Article.create(user:'Madison', genre:'WOMENS',season: 'Spring/Summer')
+Article.create(user:'Madison', genre:'WOMENS',season: 'Autumn/Winter')
+
+Article.create(user:'Fernando', genre:'MENS',season: 'Spring/Summer')
+Article.create(user:'Fernando', genre:'MENS',season: 'Autumn/Winter')
+
+Article.create(user:'Sarah', genre:'WOMENS',season: 'Spring/Summer')
+Article.create(user:'Sarah', genre:'WOMENS',season: 'Autumn/Winter')
+
+Article.create(user:'Gabriel', genre:'MENS',season: 'Spring/Summer')
+Article.create(user:'Gabriel', genre:'MENS',season: 'Autumn/Winter')
+
+Article.create(user:'Alexander', genre:'MENS',season: 'Spring/Summer')
+Article.create(user:'Alexander', genre:'MENS',season: 'Autumn/Winter')
+
+Article.create(user:'Jake', genre:'MENS',season: 'Spring/Summer')
+Article.create(user:'Jake', genre:'MENS',season: 'Autumn/Winter')
+
+Article.create(user:'Tyler', genre:'MENS',season: 'Spring/Summer')
+Article.create(user:'Tyler', genre:'MENS',season: 'Autumn/Winter')
+
+Article.create(user:'Mike', genre:'KIDS',season: 'Spring/Summer')
+Article.create(user:'Mike', genre:'KIDS',season: 'Autumn/Winter')
+
