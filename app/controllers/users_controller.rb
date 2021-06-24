@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @articles = @user.articles
+    @articles = @user.articles.order(created_at: :desc)
     # @articles = @user.articles.page(params[:page]).reverse_order
     favorites = Favorite.where(user_id: current_user.id).order(created_at: :desc).pluck(:article_id)
     @favorites = Article.find(favorites)
