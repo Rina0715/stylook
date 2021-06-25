@@ -21,7 +21,7 @@
 
 .top-main-visual {
   width: 900px;
-  height: 900px;
+  height: 1200px;
   text-align: center;
   margin: 20px auto;
   background-image: image-url("troy-wade-xXfQyHRSJTU-unsplash.jpg");
@@ -29,7 +29,7 @@
 }
 
 .top-main-visual-content {
-  height: 900px;
+  height: 1200px;
   margin: 5px 0;
   background-color: rgba(255, 255, 255, 0.7);
 }
@@ -44,3 +44,33 @@ body {
   font-family: "Georgia";
 }
 
+.search {
+  padding: 20px;
+}
+
+
+.box-prof {
+  padding: 30px;
+}
+
+.prof .circle_icon{
+    width:100px;
+    height:100px;
+    border-radius:50%;
+    overflow: hidden;
+    border:4px solid #fff;
+    margin:-50px auto 0 auto;
+}
+
+.prof .name{
+    padding:0 15px;
+    text-align: center;
+    font-size:18px;
+    font-weight:500;
+    /*color:#249bd2;*/
+    margin:14px 0;
+}
+
+.text-area{
+  white-space: pre-wrap;
+}

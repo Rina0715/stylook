@@ -1,55 +1,11 @@
 <div class="container">
   <div class="col-xs-12">
     <% if @articles.empty? %>
-      <h2>該当はありません</h2>
+      <h5>該当はありません</h5>
     <% end %>
       <div>
         <%= render 'articles/list', articles: @articles %>
       </div>
   </div>
 </div>
-
-<!--<div class="container">-->
-<!--  <div class="col-xs-12">-->
-<!--    <%# if @model == "user" %>-->
-<!--      <h2>Users search for '<%#= @value %>'</h2>-->
-<!--      <%# @datas.each do |user| %>-->
-<!--        <tbody>-->
-<!--          <tr>-->
-<!--            <th>-->
-<!--              <%#= attachment_image_tag user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg", class:"mt-3 rounded-circle"; %>-->
-<!--            </th>-->
-<!--            <th>-->
-<!--              <%#= link_to user_path(user) do %>-->
-<!--                <%#= user.name %>-->
-<!--              <%# end %>-->
-<!--            </th>-->
-<!--          </tr>-->
-<!--        </tbody>-->
-<!--      <%# end %>-->
-<!--      <%# elsif @model == "genre" %>-->
-<!--      <h2>Genres search for '<%#= @value %>'</h2>-->
-<!--      <%# @datas.each do |genre| %>-->
-<!--        <tbody>-->
-<!--          <tr>-->
-<!--            <th>-->
-<!--              <%#= render 'articles/list', articles: @articles %>-->
-<!--            </th>-->
-<!--          </tr>-->
-<!--        </tbody>-->
-<!--      <%# end %>-->
-<!--      <%# elsif @model == "season" %>-->
-<!--      <h2>Seasons search for '<%#= @value %>'</h2>-->
-<!--      <%# @datas.each do |season| %>-->
-<!--        <tbody>-->
-<!--          <tr>-->
-<!--            <th>-->
-<!--              <%#= render 'articles/list', articles: @articles %>-->
-<!--            </th>-->
-<!--          </tr>-->
-<!--        </tbody>-->
-<!--      <%# end %>-->
-<!--    <%# end %>-->
-<!--  </div>-->
-<!--</div>-->
 

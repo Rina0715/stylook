@@ -1,34 +1,69 @@
-<div class="profile-container w-75 d-flex mx-auto justify-content-around align-items-center border-bottom py-5">
-  <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg", class:"rounded-circle"; %>
-    <span>
-      <strong><%= @user.name %></strong>
-    </span>
-    <span>フォロワー
-      <%= link_to user_followers_path(@user) do %>
-        <%= @user.followers.count %>
-      <% end %>
-    </span>
-    <span>フォロー中
-      <%= link_to user_followings_path(@user) do %>
-        <%= @user.followings.count %>
-      <% end %>
-    </span>
-    <% if @user == current_user %>
-    <span>お気に入り
-      <%= link_to user_myfavorites_path(@user) do %>
-        <%= @user.favorites.count %>
-      <% end %>
-    </span>
-    <% end %>
-    <div>
-      <% if @user.id == current_user.id %>
-        <p><%= link_to "プロフィール編集", edit_user_path(@user), class:"btn btn-outline-secondary btn-block" %></p>
-      <% end %>
+<div class="box-prof">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <div class="text-center">
+          <p class="circle_icon">
+          　 <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg", class:"rounded-circle"; %>
+          </p>
+        </div>
+      </div>
     </div>
-    <div>
-      <%= @user.caption %>
+    <div class="row">
+      <div class="col">
+        <div class="text-center">
+          <p class="name"><strong><%= @user.name %></strong></p>
+        </div>
+      </div>
     </div>
+    <div class="row">
+      <div class="col">
+        <div class="text-center">
+          <div class="text-area">
+            <%= @user.caption %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <div class="text-right">
+          <span>フォロワー
+            <%= link_to user_followers_path(@user) do %>
+              <%= @user.followers.count %>
+            <% end %>
+          </span>
+        </div>
+      </div>
+      <div class="col">
+        <div class="text-center">
+          <span>フォロー中
+            <%= link_to user_followings_path(@user) do %>
+              <%= @user.followings.count %>
+            <% end %>
+          </span>
+        </div>
+      </div>
+      <div class="col">
+        <div class="text-left">
+          <% if @user == current_user %>
+          <span>お気に入り
+            <%= link_to user_myfavorites_path(@user) do %>
+              <%= @user.favorites.count %>
+            <% end %>
+          </span>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <% if @user.id == current_user.id %>
+          <p><%= link_to "プロフィール編集", edit_user_path(@user), class:"btn btn-outline-secondary btn-sm btn-block" %></p>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>
-
-
 <%= render 'articles/list', articles: @articles %>
+

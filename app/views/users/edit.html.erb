@@ -19,7 +19,7 @@
           <%= f.text_area :caption, class:"form-control", rows:"4", placeholder:"自己紹介" %>
           <%= f.submit "変更を保存", class:"btn btn-secondary btn-block btn-lg mt-5" %>
           <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-outline-secondary btn-block" %>
-          <%= link_to "退会する", user_users_withdrawal_path(@user), method: :get, class: "btn btn-outline-secondary btn-block" %>
+          <%= link_to "退会する", user_users_withdrawal_path(@user), method: :get, class: "btn btn-outline-secondary btn-sm btn-block" %>
         <% end %>
       </div>
     </div>
