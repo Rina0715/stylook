@@ -6,7 +6,7 @@
         <% @myfavorites.each do |myfavorite| %>
           <span>
             <%= link_to article_path(myfavorite.article.id) do %>
-              <%= attachment_image_tag myfavorite.article, :image, class: 'favorite-image' %>
+              <%= attachment_image_tag asset_path(myfavorite.article), :image, class: 'favorite-image' %>
             <% end %>
           </span>
         <% end %>
