@@ -4,7 +4,7 @@
       <h5 class="text-dark bg-light py-4 mb-0">プロフィール編集</h5>
       <div class="form-body p-4">
         <%= form_with model: @user, local: true do |f| %>
-          <%= attachment_image_tag asset_path("@user"), :profile_image, :fill, 60, 60, fallback: "no_image.jpg", class:"rounded-circle" %>
+          <%= attachment_image_tag @user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg", class:"rounded-circle" %>
           <div class="input-group my-3">
             <label>
             <%= f.attachment_field :profile_image, placeholder: "プロフィール画像", class: "w-100" %>
