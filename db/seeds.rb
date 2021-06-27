@@ -1,7 +1,7 @@
 
-Article.create(user:'kaylee', genre:'WOMENS', season: 'Spring/Summer')
+Article.create(user_id:1, image_id:'test-image', genre_id:1)
 Article.create(user:'kaylee', genre:'WOMENS', season: 'Autumn/Winter')
-
+　　　　　　　　　　
 Article.create(user:'Madison', genre:'WOMENS',season: 'Spring/Summer')
 Article.create(user:'Madison', genre:'WOMENS',season: 'Autumn/Winter')
 
