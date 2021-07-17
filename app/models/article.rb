@@ -4,10 +4,7 @@ class Article < ApplicationRecord
   attachment :image
 
 
-  #投稿を時間の降順に並び替える
-  # default_scope -> { order(created_at: :desc) }
-
-  has_many :post_comments, dependent: :destroy
+  has_many :post_comments, -> { order('created_at DESC') }, dependent: :destroy
   has_many :likes, dependent: :destroy
   # has_many :article_genres, dependent: :destroy
   has_many :genres, through: :article_genres

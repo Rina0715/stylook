@@ -19,8 +19,8 @@
 //= require_tree .
 /*global $*/
 
-$(function() {
-    $('.previews').slick({
-        dots: true,
-    });
-});
+// $(function() {
+//     $('.previews').slick({
+//         dots: true,
+//     });
+// });

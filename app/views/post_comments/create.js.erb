@@ -1,4 +1,5 @@
 <!--likes_buttons_<%#= @article.id %>この部分のHTMLだけ、renderで部分的に更新する処理-->
-$('#post_comments_<%= @article.id %>').html("<%= j(render partial: 'post_comments/form', locals: { post_comments: @article.post_comments }) %>");
+$('#comment_count').text("<%= @article.post_comments.count %>")
+$('#post_comments').html("<%= j(render partial: 'post_comments/form', locals: { post_comments: @article.post_comments }) %>");
 <!--送信後のコメント入力フォームを空に-->
 $("textarea").val('')
