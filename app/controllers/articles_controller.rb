@@ -23,6 +23,7 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
     @post_comment = PostComment.new
     @user = current_user
+    @article.post_comments = @article.post_comments.order(created_at: :desc)
   end
 
   def destroy
