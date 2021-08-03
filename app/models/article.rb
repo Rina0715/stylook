@@ -3,6 +3,7 @@ class Article < ApplicationRecord
   belongs_to :user
   attachment :image
 
+  validates :image_id, presence: true
 
   has_many :post_comments, -> { order('created_at DESC') }, dependent: :destroy
   has_many :likes, dependent: :destroy
