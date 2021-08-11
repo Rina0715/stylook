@@ -1,5 +1,6 @@
 class LikesController < ApplicationController
 
+
   def create
     @article = Article.find(params[:article_id])
     if @article.user_id != current_user.id   # 自分の投稿以外にお気に入り登録が可能
@@ -19,6 +20,7 @@ class LikesController < ApplicationController
     # 非同期処理のためredirect_toを削除
     # redirect_to article_path(article)
   end
+
 
 
 end
